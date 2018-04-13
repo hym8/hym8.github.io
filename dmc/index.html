@@ -51,6 +51,16 @@
 
         $(window).on("load",function(){
             var winHeight = $(window).height();
+            function isQQ()
+            {
+              var ua = window.navigator.userAgent.toLowerCase();
+              if(ua.match(/QQ/i)=='qq'){
+                return true;
+              }else{
+                return false;
+              }
+            }
+
             function is_weixin() {
                 var ua = navigator.userAgent.toLowerCase();
                 if (ua.match(/MicroMessenger/i) == "micromessenger") {
@@ -59,8 +69,8 @@
                     return false;
                 }
             }
-            var isWeixin = is_weixin();
-            if(isWeixin){
+            var isWeixinOrQQ = is_weixin() || isQQ();
+            if(isWeixinOrQQ){
                 $(".weixin-tip").css("height",winHeight);
                 $(".weixin-tip").show();
                 $("#bg").show();
@@ -71,7 +81,6 @@
                 } else {
                     window.location.href="https://www.flowdmc.com/register/?inviteCode=ZKYURS";
                 }
-                
             }
 
         })
