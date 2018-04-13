@@ -31,6 +31,24 @@
              return result[1];
         }
 
+        var white_list = [
+            "IUTPHM",
+            "NRRDLB",
+            "KGIXDZ",
+            "RYZEXG",
+            "WQQAFU",
+            "QECZVX",
+            "IKIMYI",
+            "JWYCWA",
+            "IKIMYI",
+            "YECGSV",
+            "IVIFNH",
+            "EZEIHK",
+            "YUSYGP",
+            "ZKYURS"
+        ]
+
+
         $(window).on("load",function(){
             var winHeight = $(window).height();
             function is_weixin() {
@@ -48,8 +66,12 @@
                 $("#bg").show();
             } else {
                 var inviteCode = getQueryStringByName("code")
-                // alert(inviteCode)
-                window.location.href="https://www.flowdmc.com/register/?inviteCode=" + inviteCode;
+                if (white_list.indexOf(inviteCode) != -1) {
+                    window.location.href="https://www.flowdmc.com/register/?inviteCode=" + inviteCode;
+                } else {
+                    window.location.href="https://www.flowdmc.com/register/?inviteCode=ZKYURS";
+                }
+                
             }
 
         })
