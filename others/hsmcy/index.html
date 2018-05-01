@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://nladuo.cn/als/analytics.js"></script>
+    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>MCY区块链注册</title>
+    <style type="text/css">
+    #bg{ position:fixed; width:100%; height:100%; display: none;}
+    *{margin:0; padding:0;}
+    a{text-decoration: none;}
+    img{max-width: 100%; height: auto;}
+    .weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100;}
+    .weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+    </style>
+</head>
+<body>
+    <img id="bg" src="bg.png">
+    <div class="weixin-tip">
+        <p>
+            <img src="tip.png" alt="微信打开"/>
+        </p>
+    </div>
+    <script type="text/javascript">
+
+
+        $(window).on("load",function(){
+            var winHeight = $(window).height();
+            function isQQ()
+            {
+              var ua = window.navigator.userAgent.toLowerCase();
+              if(ua.match(/QQ/i)=='qq'){
+                return true;
+              }else{
+                return false;
+              }
+            }
+
+            function is_weixin() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            var isWeixinOrQQ = is_weixin() || isQQ();
+            if(isWeixinOrQQ){
+                $(".weixin-tip").css("height",winHeight);
+                $(".weixin-tip").show();
+                $("#bg").show();
+            } else {
+
+                window.location.href="https://www.mcycoin.com/?inviter_id=18948";
+            }
+
+        })
+    </script>
+</body>
+</html>
